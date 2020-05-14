@@ -2,20 +2,17 @@ import SearchActionTypes from './search.types';
 import axios from 'axios';
 import APIkey from '../../APIkey';
 
-export const setLoading = () => {
-  return {
-    type: SearchActionTypes.LOADING
-  };
-};
+export const setLoading = () => ({
+  type: SearchActionTypes.LOADING
+});
 
-export const fetchMoviesStart = searchTerm => dispatch => {  
-  dispatch({
-    type: SearchActionTypes.FETCH_MOVIES_START,
-    payload: searchTerm 
-  })  
-};
+export const fetchMoviesStart = searchTerm => ({   
+  type: SearchActionTypes.FETCH_MOVIES_START,
+  payload: searchTerm    
+});
 
-export const fetchMovies = searchTerm => dispatch => {  
+export const fetchMovies = searchTerm => {  
+  return dispatch => {
   axios
     .get(`https://www.omdbapi.com/?apikey=${APIkey.APIkey}&s=${searchTerm}`)
     .then(response =>
@@ -29,7 +26,8 @@ export const fetchMovies = searchTerm => dispatch => {
         type: SearchActionTypes.FETCH_MOVIES_FAILURE,
         payload: error
       })
-    );  
+    ); 
+  } 
 };
 
 export const fetchMovie = id => {

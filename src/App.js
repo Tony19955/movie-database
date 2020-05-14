@@ -18,7 +18,7 @@ const theme = createMuiTheme({
         color: "white"
       },
       adornedStart: {
-        background: "#3f51b57a"
+        background: "#3f51b5c4"
       },
       inputAdornedStart: {
         borderLeft: ".1rem solid white",

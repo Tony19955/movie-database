@@ -39,14 +39,14 @@ class MovieDetail extends Component {
                   </MovieTitle>
                 </TitleBox>
                 <Flexbox>
+                  <img src={Poster} alt='Movie wallpaper' />
                   <Section>
-                    <Tooltip>{Genre}</Tooltip>
-                    <Tooltip>{Released}</Tooltip>
-                    <Tooltip>{Rated}</Tooltip>
-                    <Tooltip>IMDb {imdbRating}</Tooltip>
+                    <Tooltip><TooltipPar>Genre:</TooltipPar><TooltipProp>{Genre}</TooltipProp></Tooltip>
+                    <Tooltip><TooltipPar>Released:</TooltipPar><TooltipProp>{Released}</TooltipProp></Tooltip>
+                    <Tooltip><TooltipPar>Rated:</TooltipPar><TooltipProp>{Rated}</TooltipProp></Tooltip>
+                    <Tooltip><TooltipPar>IMDb:</TooltipPar><TooltipProp>{imdbRating}</TooltipProp></Tooltip>
                   </Section>
                 </Flexbox>
-                <img src={Poster} alt='Movie wallpaper' />
               </Main>          
               <Information>  
                 <h2>About</h2>
@@ -83,6 +83,10 @@ const Buttons = styled.div`
   display: flex;  
   margin-top: 2rem;
   justify-content: center;
+
+  & :last-child {
+    margin-left: .25rem;
+  }
 `;
 
 const About = styled.p`
@@ -95,11 +99,6 @@ const Main = styled.div`
   background: gray;
 `;
 
-const Section = styled.div`
-  display: flex;
-  padding-top: 1rem;    
-`;
-
 const Information = styled.div`
   width: 100%;
   display: flex;
@@ -108,13 +107,28 @@ const Information = styled.div`
   flex-direction: column;
 `;
 
-const Tooltip = styled.p`
-  padding: .5rem;
-  margin: 0 .25rem;
+const Tooltip = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: .5rem 0 .5rem 1rem;
   color: #3f51b5;
+  background: white;
+  border-radius: .5rem 0 .5rem 0;
+`;
+
+const TooltipPar = styled.p`
+  padding: .25rem;
+  color: white;
+  margin-right: .75rem;
   font-weight: 700;
-  border-radius: .5rem;
+  border-radius: .5rem 0 .5rem 0;
   background: rgb(35, 35, 35);
+`;
+
+const TooltipProp = styled.p`
+  padding-right: .5rem;
+  font-weight: 700;
 `;
 
 const TitleBox = styled.div`
@@ -128,10 +142,17 @@ const TitleBox = styled.div`
 
 const Flexbox = styled.div`
   display: flex;
-  padding: 0 2rem;
-  margin-bottom: 1rem;
+  padding: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+`;
+
+const Section = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  
 `;
 
 const MovieTitle = styled.h1`

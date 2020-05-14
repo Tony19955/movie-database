@@ -60,11 +60,12 @@ const mapStateToProps = state => ({
   searchTerm: state.movies.searchTerm
 });
 
-/*
+
 const mapDispatchToProps = dispatch => ({    
   fetchMoviesStart: (searchTerm) => dispatch(fetchMoviesStart(searchTerm)),
-  fetchMovies: (searchTerm) => dispatch(fetchMovies(searchTerm))
+  fetchMovies: (searchTerm) => dispatch(fetchMovies(searchTerm)),
+  setLoading: () => dispatch(setLoading())
 });
-*/
 
-export default connect(mapStateToProps, { fetchMoviesStart, fetchMovies, setLoading })(Search);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

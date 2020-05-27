@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectLoading } from '../redux/search/search.selectors';
 
 import Search from '../components/search';
 import Spinner from '../components/spinner';
@@ -20,8 +22,8 @@ const MovieSearch = ({ loading }) => {
   );  
 };
 
-const mapStateToProps = state => ({    
-  loading: state.movies.loading
+const mapStateToProps = createStructuredSelector({    
+  loading: selectLoading
 })
 
 export default connect(mapStateToProps, null)(MovieSearch); 

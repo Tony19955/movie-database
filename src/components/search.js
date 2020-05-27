@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { createStructuredSelector } from 'reselect';
+import { selectSearchTerm } from '../redux/search/search.selectors';
 import styled from 'styled-components';
+
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
@@ -56,10 +59,9 @@ const Container = styled.form`
   justify-content: center;
 `;
 
-const mapStateToProps = state => ({    
-  searchTerm: state.movies.searchTerm
+const mapStateToProps = createStructuredSelector({    
+  searchTerm: selectSearchTerm
 });
-
 
 const mapDispatchToProps = dispatch => ({    
   fetchMoviesStart: (searchTerm) => dispatch(fetchMoviesStart(searchTerm)),
@@ -67,5 +69,4 @@ const mapDispatchToProps = dispatch => ({
   setLoading: () => dispatch(setLoading())
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search); 

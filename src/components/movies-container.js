@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectMovies } from '../redux/search/search.selectors';
 
 import MovieCard from './movie-card';
 
@@ -22,8 +24,8 @@ const MoviesContainer = ({ movies }) => {
   
 };
 
-const mapStateToProps = state => ({
-  movies: state.movies.movies 
+const mapStateToProps = createStructuredSelector({
+  movies: selectMovies
 })
 
 export default connect(mapStateToProps, null)(MoviesContainer);

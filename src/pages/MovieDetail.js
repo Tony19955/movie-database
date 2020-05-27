@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectMovie } from '../redux/search/search.selectors';
 import styled from 'styled-components';
 
 import Spinner from '../components/spinner';
@@ -183,8 +185,8 @@ const Container = styled.div`
   padding: 1rem;
 `;
 
-const mapStateToProps = state => ({  
-  movie: state.movies.movie,
+const mapStateToProps = createStructuredSelector({  
+  movie: selectMovie
 });
 
 const mapDispatchToProps = dispatch => ({    
